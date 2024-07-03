@@ -1,0 +1,28 @@
+html, body {
+    background-image: url('./assets/54.png'); /* Adjust path as necessary */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden; /* Prevent scrolling */
+    height: 100%; /* Ensure html and body cover the entire viewport */
+    margin: 0;
+    padding: 0;
+}
+h1{
+    font-size: 25;
+    color: azure;
+}
+.weather{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    border-radius: 15px;
+    border-color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    backdrop-filter: blur(5px); /* Optional: Adds a blur effect */
+    padding: 15px;
+}

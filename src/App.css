@@ -1,0 +1,23 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.weather{
+  border-style: solid;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  backdrop-filter: blur(5px); /* Optional: Adds a blur effect */
+  padding: 25px;
+  height: 600px;
+  color: aliceblue;
+}
+
+.app-name{
+  color: aliceblue;
+}
+.search-bar{
+  background-color: transparent;
+  color: green;
+}
