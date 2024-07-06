@@ -16,11 +16,6 @@ const App = () => {
                         element={<WeatherApp />}
                     />
 
-                    <Route
-                        path="/about"
-                        element={<About />}
-                    />
-
 					<Route
                         path="/login"
                         element={<Login />}

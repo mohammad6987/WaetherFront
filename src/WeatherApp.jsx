@@ -1,5 +1,5 @@
 import { Oval } from 'react-loader-spinner';
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFrown } from '@fortawesome/free-solid-svg-icons';
@@ -15,7 +15,29 @@ function WeatherApp() {
   });
   const [error, setError] = useState(null);
   const navigate = useNavigate(); // Use useNavigate hook for navigation
-  
+  const backgrounds = [
+    'url(./assets/9.png)',
+    'url(./assets/54.png)',
+    'url(./assets/17.png)'
+  ];
+  const changeBackground = () => {
+    let index = 0;
+
+    return () => {
+      document.body.style.backgroundImage = backgrounds[index];
+      document.body.style.backgroundSize = 'cover'; 
+      index = (index + 1) % backgrounds.length;
+    };
+  };
+
+  useEffect(() => {
+    const backgroundChanger = changeBackground(); // Initialize the background changer
+    const interval = setInterval(() => {
+      backgroundChanger();
+    }, 2000); // Change every 2 seconds
+
+    return () => clearInterval(interval); // Cleanup interval on unmount
+  }, []);
   const toDateFunction = () => {
     const months = [
       'January', 'February', 'March', 'April', 'May', 'June',
@@ -33,6 +55,7 @@ function WeatherApp() {
     if (event.key === 'Enter') {
       const valid = await handleLoginNavigation();
       if(!valid){
+        alert('Please login to access this page!');
         navigate('/login');
       }
       else{
@@ -64,10 +87,11 @@ function WeatherApp() {
   };
 
   const handleLoginNavigation = async () => {
-    const validateUrl = 'http://localhost:80/authService/validate';
+    const validateUrl = 'http://localhost:8080/authService/validate';
     const token = localStorage.getItem('Token');
     if (!token) {
       console.log('empty token');
+      alert('Please login to access this feature!');
       return false;
     }
   
@@ -87,6 +111,7 @@ function WeatherApp() {
       }
     } catch (error) {
       console.log('Error:', error);
+      alert('Error in sending the request! please try again.  ' )
       return false;
     }
   };

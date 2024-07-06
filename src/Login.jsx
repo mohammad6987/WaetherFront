@@ -30,24 +30,27 @@ function Login() {
 				console.log(error);
 				console.log(data);	
 				console.log(password + " " + username);
+				alert('Error in connecting to server!');
 			} else {
 				const data = await response.text();
 				if (data) {
 				  console.log(data);	
 				  setError(null);
 				  localStorage.setItem('Token', data);
-				  console.log(localStorage.getItem('Token'));	  
+				  console.log(localStorage.getItem('Token'));	
+				  alert('successful login!');  
 				  navigate('/weather');
 				  
 				  
 				} else {
 				  setError('Server is not responding , please try again later.');
+				  alert('Server is not responding , please try again later.')
 				}
 			}
 		}catch(error){
 			
 			console.log(error.statusText);
-			setError('The user doesn\'t exist or the password doesn\'t match! ')
+			alert('Server is not responding , please try again later.')
 		}
 		
 	};
